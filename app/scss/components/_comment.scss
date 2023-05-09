@@ -1,0 +1,54 @@
+.comment {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    padding: 2rem;
+    border-radius: 0.8rem;
+
+    .header,
+    .body {
+        grid-column: 2 / -1;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .left-side {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            span {
+                padding: 0.2em 0.4em;
+                border-radius: 0.2em;
+            }
+        }
+        .right-side {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+                        
+            .btn-icon {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-weight: 900;
+                background-color: transparent;
+                height: fit-content;
+                border: none;
+                
+                cursor: pointer;
+            }
+        }
+    }
+
+    .body {
+        line-height: 1.4;
+    }
+
+    .vote {
+        grid-row: 1 / 3;
+    }
+}
