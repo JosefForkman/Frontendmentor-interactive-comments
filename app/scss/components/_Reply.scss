@@ -21,4 +21,14 @@
             outline: transparent;
         }
     }
+    @media screen and (max-width: 690px) {
+        align-items: center;
+        textarea {
+            grid-column: 1 / -1;
+            grid-row: 1;
+        }
+        .btn {
+            justify-self: end;
+        }
+    }
 }

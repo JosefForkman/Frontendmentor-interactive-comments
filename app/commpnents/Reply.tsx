@@ -4,7 +4,7 @@ export default function () {
 
     return (
         <form className="reply bg-Neutral-White">
-            <Image src="/avatars/image-juliusomo.webp" width={64} height={64} alt="" />
+            <Image src="/avatars/image-juliusomo.webp" width={56} height={56} alt="" />
             <textarea
                 name=""
                 id=""

@@ -10,7 +10,7 @@ export default function ({ comment }: { comment: Comment | Reply }) {
         <div className="comment bg-Neutral-White">
             <div className="header">
                 <div className="left-side">
-                    <Image src={comment.user.image.webp} width={64} height={64} alt="" />
+                    <Image src={comment.user.image.webp} width={56} height={56} alt="" />
                     <b className="text-Neutral-Dark-blue">{comment.user.username}</b>
                     <span className="bg-Primary-Moderate-blue text-Neutral-White">you</span>
                     <p className="text-Neutral-Dark-blue">{comment.createdAt}</p>
@@ -25,10 +25,10 @@ export default function ({ comment }: { comment: Comment | Reply }) {
                     <FontAwesomeIcon icon={faPen} />
                     <p>Edit</p>
                 </button>
-                <button className="btn-icon text-Primary-Moderate-blue text-Primary-Light-grayish-blue-hover">
+                {/* <button className="btn-icon text-Primary-Moderate-blue text-Primary-Light-grayish-blue-hover">
                     <FontAwesomeIcon icon={faReply} />
                     <p>Reply</p>
-                </button>
+                </button> */}
             </div>
             <div className="body text-Neutral-Grayish-Blue">
                 <p>{comment.content}</p>
