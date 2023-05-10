@@ -1,19 +1,15 @@
 .comment {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto 1fr auto;
     gap: 1rem;
     padding: 2rem;
     border-radius: 0.8rem;
-
-    .header,
-    .body {
-        grid-column: 2 / -1;
-    }
 
     .header {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        grid-column: 2 / 3;
 
         .left-side {
             display: flex;
@@ -25,30 +21,49 @@
                 border-radius: 0.2em;
             }
         }
-        .right-side {
+    }
+    .right-side {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+
+        .btn-icon {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
-                        
-            .btn-icon {
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-                font-weight: 900;
-                background-color: transparent;
-                height: fit-content;
-                border: none;
-                
-                cursor: pointer;
-            }
+            gap: 0.5rem;
+            font-weight: 900;
+            background-color: transparent;
+            height: fit-content;
+            border: none;
+
+            cursor: pointer;
         }
     }
 
     .body {
+        grid-column: 2 / -1;
         line-height: 1.4;
     }
 
     .vote {
         grid-row: 1 / 3;
+    }
+
+    @media screen and (max-width: 690px) {
+        grid-template-columns: 1fr auto;
+        .header {
+            grid-column: 1 / -1; 
+        }
+        .right-side {
+            grid-row: 3;
+            grid-column: 2;
+        }
+        .body {
+            grid-column: 1 / -1;
+        }
+        .vote {
+            grid-row: 3 / 4;
+            grid-column: 1 / 3;
+        }
     }
 }
