@@ -1,9 +1,15 @@
+// .comment .header
+
 .comment {
     display: grid;
     grid-template-columns: auto 1fr auto;
     gap: 1rem;
     padding: 2rem;
     border-radius: 0.8rem;
+
+    &:hover {
+        
+    }
 
     .header {
         display: flex;

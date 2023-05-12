@@ -3,6 +3,7 @@ import './scss/main.scss';
 import Data from './data.json'
 import { FormComment } from './interface/form-comment';
 import Reply from './commpnents/Reply';
+import Dialog from './commpnents/dialog';
 
 export default function Home() {
   const commentData: FormComment = Data
@@ -31,6 +32,7 @@ export default function Home() {
           }
           <Reply />
         </div>
+        <Dialog />
       </main>
     </>
   )
