@@ -1,19 +1,54 @@
-'use client';
-export default function () {
-    const dialog = document.querySelector('dialog');
-    dialog?.showModal();
-    // console.log(dialog?.showModal());
+"use client"
+import { Dispatch, SetStateAction, useEffect } from "react";
+import { Comment, Reply } from "../interface/form-comment";
+
+
+export default function ({ comment }: { comment: Comment | Reply }) {
+    // const dialogElement = document.querySelector('dialog')
+    function show(e: any) {
+        const dialog = document.querySelector('dialog');
+
+        if (dialog) {
+            dialog.showModal()
+            dialog.classList.add('active');
+        }
+    }
+
+    function close(e: any) {
+        const dialog = document.querySelector('dialog');
+
+        if (dialog) {
+            dialog.close();
+            dialog.classList.remove('active');
+        }
+    }
+
+    function confirm() {
+        if (comment) {
+            console.log(comment.user.username);
+        }
+    }
+
 
     return (
         <>
-            <button className="btn" onClick={e => {
-                e.target.nextElementSibling.showModal()
-            }}>show</button>
+            {/* <button className="btn" onClick={show}>show</button> */}
             <dialog className="alert-box bg-Neutral-White">
                 <h2>Delete comment</h2>
                 <p>Are you sure to delete this comment? This will remove the comment and can't be undone.</p>
-                <button className='btn bg-Neutral-Grayish-Blue text-Neutral-White bg-Neutral-Light-gray-hover text-Neutral-Grayish-Blue-hover'>No, cancel</button>
-                <button className='btn bg-Primary-Soft-Red text-Neutral-White bg-Primary-Pale-red-hover'>Yes, delete</button>
+                <div className="btn-container">
+                    <button
+                        className='btn bg-Neutral-Grayish-Blue text-Neutral-White bg-Neutral-Light-gray-hover text-Neutral-Grayish-Blue-hover'
+                        onClick={close}>
+                        No, cancel
+                    </button>
+                    <button
+                        className='btn bg-Primary-Soft-Red text-Neutral-White bg-Primary-Pale-red-hover'
+                        onClick={confirm}
+                    >
+                        Yes, delete
+                    </button>
+                </div>
             </dialog>
         </>
     )
