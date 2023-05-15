@@ -6,9 +6,10 @@ import Vote from "../vote";
 import { Comment, Reply } from "../../interface/form-comment";
 import Dialog from "../dialog";
 import { useEffect, useState } from "react";
+import notFound from "@/app/not-found";
 
 
-export default function (props: { comment: (Comment | Reply) }) {
+export default function (props: { comment: Comment | Reply }) {
     const [comment, setComment] = useState<(Comment | Reply)>()
     const [score, setScore] = useState(0);
 
@@ -35,9 +36,9 @@ export default function (props: { comment: (Comment | Reply) }) {
             <div className="header">
                 <div className="left-side">
                     <Image src={comment.user.image.webp} width={56} height={56} alt="" />
-                    <b className="text-Neutral-Dark-blue">{comment.user.username}</b>
+                    <b className="text-Neutral-Dark-blue">{comment?.user.username}</b>
                     <span className="bg-Primary-Moderate-blue text-Neutral-White">you</span>
-                    <p className="text-Neutral-Dark-blue">{comment.createdAt}</p>
+                    <p className="text-Neutral-Dark-blue">{comment?.createdAt}</p>
                 </div>
             </div>
             <div className="right-side">
