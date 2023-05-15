@@ -1,7 +1,9 @@
 .commentsContainer {
+    --gap: 2rem;
+
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: var(--gap);
     max-width: 800px;
     padding: 2rem 1rem;
     margin-inline: auto;
@@ -9,17 +11,19 @@
     .comment-reply {
         display: grid;
         grid-template-columns: auto 1fr;
-        row-gap: 2rem;
+        row-gap: var(--gap);
+
+        margin-top: var(--gap);
 
         .horizontal-line {
             grid-row: 1 / 3;
             height: 100%;
             width: 3px;
-            margin-inline: 2rem;
+            margin-inline: var(--gap);
         }
     }
     @media screen and (max-width: 690px) {
-        
+
         .comment-reply {
 
             .horizontal-line {

@@ -26,7 +26,9 @@ export default function (props: { comment: (Comment | Reply) }) {
         }
     }
 
-    
+    if (!comment) {
+        return <h1>Not found</h1>
+    }
 
     return (
         <div className="comment bg-Neutral-White">
