@@ -18,9 +18,13 @@ export default function Vote({ score, setScore }: params) {
 
     return (
         <div className="vote bg-Neutral-Light-gray">
-            <FontAwesomeIcon className="vote-icon text-Primary-Light-grayish-blue text-Primary-Moderate-blue-hover" icon={faPlus} onClick={add} />
+            <button onClick={add}>
+                <FontAwesomeIcon className="vote-icon text-Primary-Light-grayish-blue text-Primary-Moderate-blue-hover text-Primary-Moderate-blue-focus" icon={faPlus} />
+            </button>
             <span className="text-Primary-Moderate-blue">{score}</span>
-            <FontAwesomeIcon className="vote-icon text-Primary-Light-grayish-blue text-Primary-Moderate-blue-hover" icon={faMinus} onClick={remove} />
+            <button onClick={remove}>
+                <FontAwesomeIcon className="vote-icon text-Primary-Light-grayish-blue text-Primary-Moderate-blue-hover" icon={faMinus} />
+            </button>
         </div>
     )
 }

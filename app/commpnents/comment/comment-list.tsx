@@ -9,15 +9,15 @@ export default function commentList() {
     return (
         <>
             {
-                Comments?.map(comment => {
+                Comments?.map((comment, index) => {
                     return (
                         <div key={comment.id}>
-                            <Comment comment={comment} />
+                            <Comment comment={comment} index={index} />
                             {comment.replies.length > 0 &&
                                 <div className='comment-reply'>
                                     <div className="horizontal-line bg-Neutral-Light-gray"></div>
-                                    {comment.replies.map(replie => {
-                                        return <Comment key={replie.id} comment={replie} />
+                                    {comment.replies.map((replie, index) => {
+                                        return <Comment key={replie.id} comment={replie} index={index} />
                                     })}
                                 </div>
                             }
