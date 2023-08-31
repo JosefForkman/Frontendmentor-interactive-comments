@@ -4,15 +4,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faReply, faTrash } from "@fortawesome/free-solid-svg-icons";
 import Vote from "../vote";
 import { Comment, Reply } from "../../interface/form-comment";
-import Dialog from "../dialog";
-import { useEffect, useState } from "react";
-import notFound from "@/app/not-found";
-
-import Modal from "react-modal";
+import { useContext, useEffect, useState } from "react";
+import { DialogContext } from "../Dialog/dialogContext";
 
 
 export default function (props: { comment: Comment | Reply, index: number }) {
     const [comment, setComment] = useState<(Comment | Reply)>()
+    const { CommentId, SetCommentId, Active, SetActive } = useContext(DialogContext)
     const [score, setScore] = useState(0);
 
     useEffect(() => {
@@ -20,14 +18,12 @@ export default function (props: { comment: Comment | Reply, index: number }) {
         setScore(props.comment.score)
     }, [])
 
-    // function show(e: any, index: number) {
-    //     const dialog = document.querySelectorAll('dialog')[index];
-
-    //     if (dialog) {
-    //         dialog.showModal()
-    //         dialog.classList.add('active');
-    //     }
-    // }
+    const deleteComment = () => {
+        if (comment) {
+            SetCommentId(comment.id);
+            SetActive(true)
+        }
+    }
 
     if (!comment) {
         return <h1>Not found</h1>
@@ -46,9 +42,8 @@ export default function (props: { comment: Comment | Reply, index: number }) {
             <div className="right-side">
                 <button
                     className="btn-icon text-Primary-Soft-Red text-Primary-Pale-red-hover"
-                // onClick={show}
-                >
-                    {/* <FontAwesomeIcon icon={faTrash} onClick={show} /> */}
+                    onClick={deleteComment}>
+                    <FontAwesomeIcon icon={faTrash} />
                     <p>Delete</p>
                 </button>
                 <button className="btn-icon text-Primary-Moderate-blue text-Primary-Light-grayish-blue-hover">
@@ -65,26 +60,6 @@ export default function (props: { comment: Comment | Reply, index: number }) {
             </div>
 
             <Vote score={score} setScore={setScore} />
-
-            {/* <Dialog comment={comment} /> */}
-            <Modal isOpen={true} className="alert-box bg-Neutral-White">
-                <h2>Delete comment</h2>
-                {comment.user.username}
-                <p>Are you sure to delete this comment? This will remove the comment and can't be undone.</p>
-                <div className="btn-container text-Primary-Moderate-blue-focus-">
-                    <button
-                        className='btn bg-Neutral-Grayish-Blue text-Neutral-White bg-Neutral-Light-gray-hover text-Neutral-Grayish-Blue-hover'
-                        onClick={close}>
-                        No, cancel
-                    </button>
-                    <button
-                        className='btn bg-Primary-Soft-Red text-Neutral-White bg-Primary-Pale-red-hover'
-                        onClick={confirm}
-                    >
-                        Yes, delete
-                    </button>
-                </div>
-            </Modal>
         </div>
     )
 }
