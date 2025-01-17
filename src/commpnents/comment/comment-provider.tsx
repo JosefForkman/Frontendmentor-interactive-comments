@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, createContext, useEffect, useState } from "react";
 import Data from '../../data.json'
-import { FormComment, Comment } from "@/app/interface/form-comment";
+import { FormComment, Comment } from "../../interface/form-comment";
 
 const commentData: FormComment = Data;
 

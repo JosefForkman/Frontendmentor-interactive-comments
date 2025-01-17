@@ -31,6 +31,6 @@
 // ├── _settings.scss           # Sass Settings
 // └── app.scss                 # Main Sass file
 
-@import './base/base';
-@import './components/components';
-@import './pages/pages'
+@use 'base/base';
+@use 'components/components';
+@use 'pages/pages'
