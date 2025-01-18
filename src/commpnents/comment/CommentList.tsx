@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import Reply from "../Reply";
-import Comment from './comment';
+import Comment from './Comment';
 import { CommentContext } from "./comment-provider";
 import { DialogContextProvider } from "../Dialog/dialogContext";
-import Dialog from "../Dialog/dialog";
+import Dialog from "../Dialog/Dialog";
 
-export default function commentList() {
-    const { Comment: Comments, setComment } = useContext(CommentContext);
+export default function CommentList() {
+    const { Comment: Comments } = useContext(CommentContext);
 
     return (
         <>

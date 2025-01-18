@@ -1,6 +1,6 @@
 'use client';
 import { CommentProvider } from '../commpnents/comment/comment-provider';
-import CommentList from '../commpnents/comment/comment-list';
+import CommentList from '../commpnents/comment/CommentList';
 import './scss/main.scss';
 
 export default function Home() {

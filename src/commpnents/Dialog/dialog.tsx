@@ -2,13 +2,10 @@
 
 import { useContext, useEffect, KeyboardEvent, useRef } from "react";
 import { DialogContext } from "./dialogContext";
-import { CommentContext } from "../comment/comment-provider";
 
-export default function () {
+export default function Dialog () {
     const { Active, SetActive } = useContext(DialogContext);
-    const { Comment, setComment } = useContext(CommentContext);
 
-    // const dialogRef = useRef<null | HTMLDialogElement>(null)
     const dialogRef = useRef<null | HTMLDialogElement>(null)
 
     useEffect(() => {
@@ -54,10 +51,10 @@ export default function () {
     return (
         <dialog ref={dialogRef} className="alert-box bg-Neutral-White" onKeyDown={keyEvent}>
             <h2>Delete comment</h2>
-            <p>Are you sure to delete this comment? This will remove the comment and can't be undone.</p>
-            <div className="btn-container text-Primary-Moderate-blue-focus-">
+            <p>Are you sure to delete this comment? This will remove the comment and can`t be undone.</p>
+            <div className="btn-container text-Primary-Moderate-blue-focus">
                 <button
-                    className='btn bg-Neutral-Grayish-Blue text-Neutral-White bg-Neutral-Light-gray-hover text-Neutral-Grayish-Blue-hover'
+                    className="btn bg-Neutral-Grayish-Blue text-Neutral-White bg-Neutral-Light-gray-hover text-Neutral-Grayish-Blue-hover"
                     onClick={close}
                 >
                     No, cancel

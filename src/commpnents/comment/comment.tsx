@@ -1,22 +1,22 @@
 "use client"
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen, faReply, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import Vote from "../vote";
-import { Comment, Reply } from "../../interface/form-comment";
+import { Comment as IComment, Reply } from "../../interface/form-comment";
 import { useContext, useEffect, useState } from "react";
 import { DialogContext } from "../Dialog/dialogContext";
 
 
-export default function (props: { comment: Comment | Reply, index: number }) {
-    const [comment, setComment] = useState<(Comment | Reply)>()
-    const { CommentId, SetCommentId, Active, SetActive } = useContext(DialogContext)
+export default function Comment (props: { comment: IComment | Reply, index: number }) {
+    const [comment, setComment] = useState<(IComment | Reply)>()
+    const { SetCommentId, SetActive } = useContext(DialogContext)
     const [score, setScore] = useState(0);
 
     useEffect(() => {
         setComment(props.comment);
         setScore(props.comment.score)
-    }, [])
+    }, [props.comment])
 
     const deleteComment = () => {
         if (comment) {
@@ -50,10 +50,7 @@ export default function (props: { comment: Comment | Reply, index: number }) {
                     <FontAwesomeIcon icon={faPen} />
                     <p>Edit</p>
                 </button>
-                {/* <button className="btn-icon text-Primary-Moderate-blue text-Primary-Light-grayish-blue-hover">
-                    <FontAwesomeIcon icon={faReply} />
-                    <p>Reply</p>
-                </button> */}
+
             </div>
             <div className="body text-Neutral-Grayish-Blue">
                 <p>{comment.content}</p>
