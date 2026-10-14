@@ -9,14 +9,9 @@ import { DialogContext } from "../Dialog/dialogContext";
 
 
 export default function Comment (props: { comment: IComment | Reply, index: number }) {
-    const [comment, setComment] = useState<(IComment | Reply)>()
+    const [comment, setComment] = useState<(IComment | Reply)>(props.comment)
     const { SetCommentId, SetActive } = useContext(DialogContext)
-    const [score, setScore] = useState(0);
-
-    useEffect(() => {
-        setComment(props.comment);
-        setScore(props.comment.score)
-    }, [props.comment])
+    const [score, setScore] = useState(props.comment.score);
 
     const deleteComment = () => {
         if (comment) {
