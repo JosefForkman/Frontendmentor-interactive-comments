@@ -22,8 +22,8 @@
             margin-inline: var(--gap);
         }
     }
-    @media screen and (max-width: 690px) {
 
+    @media screen and (width < 690px) {
         .comment-reply {
 
             .horizontal-line {

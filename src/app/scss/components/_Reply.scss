@@ -21,7 +21,7 @@
             outline: transparent;
         }
     }
-    @media screen and (max-width: 690px) {
+    @media screen and (width < 690px) {
         align-items: center;
         textarea {
             grid-column: 1 / -1;
