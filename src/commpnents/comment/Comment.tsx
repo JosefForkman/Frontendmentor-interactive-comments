@@ -1,43 +1,57 @@
-"use client"
+"use client";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import Vote from "../vote";
 import { Comment as IComment, Reply } from "../../interface/form-comment";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { DialogContext } from "../Dialog/dialogContext";
 
-
-export default function Comment (props: { comment: IComment | Reply, index: number }) {
-    const [comment, setComment] = useState<(IComment | Reply)>(props.comment)
-    const { SetCommentId, SetActive } = useContext(DialogContext)
+export default function Comment(props: {
+    comment: IComment | Reply;
+    index: number;
+}) {
+    const [comment] = useState<IComment | Reply>(props.comment);
+    const { SetCommentId, SetActive } = useContext(DialogContext);
     const [score, setScore] = useState(props.comment.score);
 
     const deleteComment = () => {
         if (comment) {
             SetCommentId(comment.id);
-            SetActive(true)
+            SetActive(true);
         }
-    }
+    };
 
     if (!comment) {
-        return <h1>Not found</h1>
+        return <h1>Not found</h1>;
     }
 
     return (
         <div className="comment bg-Neutral-White">
             <div className="header">
                 <div className="left-side">
-                    <Image src={comment.user.image.webp} width={56} height={56} alt="" />
-                    <b className="text-Neutral-Dark-blue">{comment?.user.username}</b>
-                    <span className="bg-Primary-Moderate-blue text-Neutral-White">you</span>
-                    <p className="text-Neutral-Dark-blue">{comment?.createdAt}</p>
+                    <Image
+                        src={comment.user.image.webp}
+                        width={56}
+                        height={56}
+                        alt=""
+                    />
+                    <b className="text-Neutral-Dark-blue">
+                        {comment?.user.username}
+                    </b>
+                    <span className="bg-Primary-Moderate-blue text-Neutral-White">
+                        you
+                    </span>
+                    <p className="text-Neutral-Dark-blue">
+                        {comment?.createdAt}
+                    </p>
                 </div>
             </div>
             <div className="right-side">
                 <button
                     className="btn-icon text-Primary-Soft-Red text-Primary-Pale-red-hover"
-                    onClick={deleteComment}>
+                    onClick={deleteComment}
+                >
                     <FontAwesomeIcon icon={faTrash} />
                     <p>Delete</p>
                 </button>
@@ -45,7 +59,6 @@ export default function Comment (props: { comment: IComment | Reply, index: numb
                     <FontAwesomeIcon icon={faPen} />
                     <p>Edit</p>
                 </button>
-
             </div>
             <div className="body text-Neutral-Grayish-Blue">
                 <p>{comment.content}</p>
@@ -53,5 +66,5 @@ export default function Comment (props: { comment: IComment | Reply, index: numb
 
             <Vote score={score} setScore={setScore} />
         </div>
-    )
+    );
 }

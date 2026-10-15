@@ -9,19 +9,13 @@ export default function Dialog () {
     const dialogRef = useRef<null | HTMLDialogElement>(null)
 
     useEffect(() => {
-        if (Active) {
-            show()
-        }
-    }, [Active])
-
-    function show() {
         const dialog = dialogRef.current;
 
-        if (dialog) {
+        if (Active && dialog) {
             dialog.showModal()
             dialog.classList.add('active');
         }
-    }
+    }, [Active])
 
     function close() {
         const dialog = dialogRef.current;

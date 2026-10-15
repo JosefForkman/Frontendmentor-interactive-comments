@@ -9,11 +9,11 @@ type params = {
 
 export default function Vote({ score, setScore }: params) {
     const add = () => {
-        setScore(score += 1);
+        setScore((currentScore) => currentScore + 1);
     }
 
     const remove = () => {
-        if (score > 1) setScore(score -= 1);
+        setScore((currentScore) => currentScore > 1 ? currentScore - 1 : currentScore);
     }
 
     return (
